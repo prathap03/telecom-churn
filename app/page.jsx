@@ -128,15 +128,15 @@ export default function Home() {
         
         <div className="bg-[#FFDBDB]/[80%] flex flex-col gap-2  backdrop-blur-md rounded-xl h-[47%]  shadow-md w-[100%]">
         <div className="flex flex-col p-2 gap-[0.04rem]">
-            <h1>No of Voice Mail</h1>
+            <h1>Intl. Call Duration (mins)</h1>
             <input className="shadow-md" type="text" name="" id="" />
             </div>
             <div className="flex p-2 flex-col gap-[0.04rem]">
-            <h1>No of Voice Mail</h1>
+            <h1>Total Intl. Calls</h1>
             <input className="shadow-md" type="text" name="" id="" />
             </div>
             <div className="flex p-2 flex-col gap-[0.04rem]">
-            <h1>No of Voice Mail</h1>
+            <h1>Cumulative Intl. Calls Charges</h1>
             <input className="shadow-md" type="text" name="" id="" />
             </div>
           </div>
