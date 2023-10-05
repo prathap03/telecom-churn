@@ -31,7 +31,7 @@ export default function Home() {
       </div>
       <div className="flex justify-center ">
       <div className="flex  w-[95%]  flex-col md:flex-row justify-around items-center p-4 gap-4 bg-[#EEEBEB] shadow-md   rounded-md">
-        <div className="bg-[#FFDBDB]/[80%] md:w-[38%] lg:w-[25%] w-[98%] flex flex-col md:flex-row gap-2 backdrop-blur-md p-2 rounded-xl md:h-[98%] shadow-md ">
+        <div className="bg-[#FFDBDB]/[80%] md:w-[38%] lg:w-[28%] w-[98%] flex flex-col md:flex-row gap-2 backdrop-blur-md p-2 rounded-xl md:h-[98%] shadow-md ">
           <div className="flex flex-col gap-2 h-[100%] md:w-[50%] w-[100%] 0 p-2">
             <div className="flex  flex-col gap-[0.04rem]">
             <h1 className="md:text-[1.2rem]">Customer Id</h1>
