@@ -1,9 +1,11 @@
+'use client'
 import Head from 'next/head'
 import Image from 'next/image'
 
+
 export default function Home() {
   return (
-    <div className="h-screen flex flex-col text-black w-[100%] overflow-y-auto bg-[#F4F6F8]">
+    <div className="h-screen flex flex-col text-black w-[100%] overflow-auto bg-[#F4F6F8]">
       <Head>
         <title>Churn Prediction</title>
       </Head>
@@ -21,18 +23,18 @@ export default function Home() {
         <div className="flex flex-col gap-1 md:gap-2 items-center justify-center  h-[90%] outline-dashed outline-1 shadow-md rounded-md  w-[80%] bg-white">
         <Image className="md:mb-[1.5rem] mb-[0.5rem] transition-all scale-[70%] md:scale-100" src="/upload.png" width="100" height="100"/>
         <h1 className="p-1 font-semibold text-white text-[0.7rem] transition-all bg-blue-500 mb-3 md:mb-0 rounded-full md:p-2 hover:cursor-pointer hover:bg-blue-700">Select Churn Report (csv/xlsx)</h1>
-        <h1 className="hidden transition-all ease-linear md:block font-semibold text-[1.1rem]">or drag & drop your files here</h1>
+        <h1 className="hidden transition-all ease-linear md:block font-semibold md:text-[0.7rem] lg:text-[1.1rem]">or drag & drop your files here</h1>
         </div>
       </div>
       <div className="ml-[1rem] md:ml-[3rem]">
           <h1 className="font-semibold md:text-[2rem]  ">Churn Details</h1>
       </div>
-      <div className="flex  md:h-[50%] justify-center items-center">
-      <div className="flex w-[95%] flex-col md:flex-row justify-around items-center p-4 gap-4 bg-[#EEEBEB] shadow-md  md:h-[95%] rounded-md">
-        <div className="bg-[#FFDBDB]/[80%] md:w-[28%] w-[98%] flex flex-col md:flex-row gap-2 backdrop-blur-md p-2 rounded-xl md:h-[98%] shadow-md ">
-          <div className="flex flex-col gap-2 h-[100%] w-[100%] 0 p-2">
-            <div className="flex flex-col gap-[0.04rem]">
-            <h1>Customer Id</h1>
+      <div className="flex justify-center ">
+      <div className="flex  w-[95%]  flex-col md:flex-row justify-around items-center p-4 gap-4 bg-[#EEEBEB] shadow-md   rounded-md">
+        <div className="bg-[#FFDBDB]/[80%] md:w-[38%] lg:w-[25%] w-[98%] flex flex-col md:flex-row gap-2 backdrop-blur-md p-2 rounded-xl md:h-[98%] shadow-md ">
+          <div className="flex flex-col gap-2 h-[100%] md:w-[50%] w-[100%] 0 p-2">
+            <div className="flex  flex-col gap-[0.04rem]">
+            <h1 className="md:text-[1.2rem]">Customer Id</h1>
             <input className="shadow-md" type="text" name="" id="" />
             </div>
             
@@ -92,9 +94,9 @@ export default function Home() {
 
           </div>
 
-          <div className="flex h-[100%] w-[100%]  p-2">
+          <div className="flex h-[100%] md:w-[50%]  p-2">
 
-          <div className="flex w-[100%] md:w-auto flex-col gap-[0.04rem]">
+          <div className="flex  md:w-auto  w-[100%] flex-col gap-[0.04rem]">
             <h1>Calls to Customer Service</h1>
             <input className="shadow-md" type="text" name="" id="" />
             </div>
@@ -106,7 +108,7 @@ export default function Home() {
         </div>
 
         <div className="flex h-[100%] md:w-[20%] w-[98%] transition-all  flex-col gap-2 ">
-        <div className="bg-[#FFDBDB]/[80%] flex flex-col  gap-2 backdrop-blur-md rounded-xl h-[50%] shadow-md w-[100%]">
+        <div className="bg-[#FFDBDB]/[80%] p-2 flex flex-col  gap-2 backdrop-blur-md rounded-xl h-[50%] shadow-md w-[100%]">
         <div className="flex flex-col p-2 gap-[0.04rem]">
             <h1>Day Call Duration (mins)</h1>
             <input className="shadow-md" type="text" name="" id="" />
@@ -126,7 +128,7 @@ export default function Home() {
         
 
         
-        <div className="bg-[#FFDBDB]/[80%] flex flex-col gap-2  backdrop-blur-md rounded-xl h-[47%]  shadow-md w-[100%]">
+        <div className="bg-[#FFDBDB]/[80%]  flex flex-col gap-2  backdrop-blur-md rounded-xl h-[47%]  shadow-md w-[100%]">
         <div className="flex flex-col p-2 gap-[0.04rem]">
             <h1>Intl. Call Duration (mins)</h1>
             <input className="shadow-md" type="text" name="" id="" />
@@ -142,8 +144,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex-grow  h-[100%] w-[98%] md:w-auto transition-all  flex md:flex-row flex-col justify-start gap-4">
-        <div className="bg-[#FFDBDB]/[80%] backdrop-blur-md rounded-xl h-[45%] shadow-md w-[100%] md:w-[33%]">
+        <div className="flex-grow     h-[100%] w-[98%] md:w-auto transition-all  flex md:flex-row flex-col justify-start gap-4">
+        <div className="bg-[#FFDBDB]/[80%] backdrop-blur-md rounded-xl h-max shadow-md w-[100%] md:w-max p-2">
         <div className="flex flex-col p-2 gap-[0.04rem]">
             <h1>Night Call Duration (mins)</h1>
             <input className="shadow-md" type="text" name="" id="" />
@@ -159,7 +161,7 @@ export default function Home() {
           
           </div>
 
-          <div className="bg-[#FFDBDB]/[80%] backdrop-blur-md rounded-xl h-[45%] shadow-md w-[100%] md:w-[33%]">
+          <div className="bg-[#FFDBDB]/[80%] backdrop-blur-md rounded-xl h-max shadow-md w-[100%] md:w-max p-2">
           <div className="flex flex-col p-2 gap-[0.04rem]">
             <h1>Evening Call Duration (mins)</h1>
             <input className="shadow-md" type="text" name="" id="" />
@@ -183,8 +185,8 @@ export default function Home() {
       </div>
       
       </div>
-      <div className="flex items-center justify-center flex-grow m-2 md:m-0">
-        <h1 className="p-2 font-semibold text-white bg-[#29C8EB] hover:cursor-pointer hover:bg-[#29C8EB]/[80%] transition-all rounded-xl text-[1.3rem]">ANALYZE</h1>
+      <div className="flex items-center justify-center flex-grow flex-shrink-0 m-2 md:m-0">
+        <button onClick={()=>{alert("YOU HAVE CLICKED THE BUTTON")}}  className="p-2  font-semibold text-white bg-[#29C8EB] hover:cursor-pointer hover:bg-[#29C8EB]/[80%] transition-all rounded-xl text-[1.3rem]">ANALYZE</button>
       </div>
     </div>
   )
