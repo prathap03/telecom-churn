@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
@@ -14,7 +14,90 @@ export default function Home() {
   const [cintl, setCintl] = useState(null);
   const [ccs, setCcs] = useState(null);
 
+  const  getPrediction = async()=>{
+    console.log(cid,
+      cstate,
+      ctenure,
+      carea,
+      voice,
+      nvoice,
+      ccs,
+      dcd,
+      tdc,
+      cdc,
+      ncd,
+      tnc,
+      cnc,
+      ecd,
+      tec,
+      cec,
+      icd,
+      tic,
+      cic)
+    if (
+      cid &&
+      (ctenure || ctenure ==0) &&
+      carea &&
+      (voice || voice ==0) &&
+      (nvoice || nvoice ==0) &&
+      (ccs || ccs ==0) &&
+      (dcd || dcd ==0) &&
+      (tdc || tdc ==0) &&
+      (cdc || cdc==0) &&
+      (ncd || ncd ==0) &&
+      (tnc || tnc ==0) &&
+      (cnc || cnc ==0) &&
+      (ecd || ecd ==0) &&
+      (tec || cec ==0) &&
+      (cec || cec ==0) &&
+      (icd || icd==0) &&
+      (tic || tic ==0) &&
+      (cic || cic==0) 
+    ) {
+      setIsLoading(!isLoading)
+      console.log("DATA");
+      console.log("net call duration", ncd + ecd + icd + dcd);
+      let netcd = ncd + ecd + icd + dcd;
+      let tnetc = tec + tdc + tnc;
+      let cnetc = cec + cnc + cdc;
+      //international_plan	voice_mail_plan	number_vmail_messages	total_intl_minutes	total_intl_calls	total_intl_charge	number_customer_service_calls	total_net_minutes	total_net_calls	total_net_charge
+      
+      let data = {
+        cid: cid,
+        data: [cintl, voice, nvoice, icd, tic, cic, ccs, netcd, tnetc, cnetc],
+      };
+
+      let res; 
+      fetch('/api/getPrediction',{
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+      },
+      }).catch((e) => console.log(e)).then((response) => response.json())
+      .then((data) => (res = data))
+      .then(() => {console.log(res);setData(res)});
+      if(data){
+        console.log(data)
+        setIsLoading(false)
+        setIsPredict(true)
+      }
+      setIsLoading(false)
+  }else{
+    alert("Enter all the required details")
+  }
+}
+
   //Day
+
+  
+
+
+  const [isPredict,setIsPredict] = useState(false)
+
+
+  const [isLoading,setIsLoading] = useState(false)
+
 
   const [dcd, setDcd] = useState(null);
   const [tdc, setTdc] = useState(null);
@@ -41,45 +124,7 @@ export default function Home() {
   //file
 
   const [file, setFile] = useState(null);
-
-  const submit = () => {
-    if (
-      cid &&
-      cstate &&
-      ctenure &&
-      carea &&
-      voice &&
-      nvoice &&
-      ccs &&
-      dcd &&
-      tdc &&
-      cdc &&
-      ncd &&
-      tnc &&
-      cnc &&
-      ecd &&
-      tec &&
-      cec &&
-      icd &&
-      tic &&
-      cic
-    ) {
-      console.log("DATA");
-      console.log("net call duration", ncd + ecd + icd + dcd);
-      let netcd = ncd + ecd + icd + dcd;
-      let tnetc = tec + tdc + tnc;
-      let cnetc = cec + cnc + cdc;
-      //international_plan	voice_mail_plan	number_vmail_messages	total_intl_minutes	total_intl_calls	total_intl_charge	number_customer_service_calls	total_net_minutes	total_net_calls	total_net_charge
-
-      let data = {
-        cid: cid,
-        data: [cintl, voice, nvoice, icd, tic, cic, ccs, netcd, tnetc, cnetc],
-      };
-      console.log(data);
-    } else {
-      alert("Enter All the Required Details");
-    }
-  };
+  const [data,setData] = useState(null);
 
   return (
     <div className="h-screen flex flex-col text-black w-[100%] overflow-auto bg-[#F4F6F8]">
@@ -117,7 +162,23 @@ export default function Home() {
       <div className="ml-[1rem] md:ml-[3rem]">
         <h1 className="font-semibold md:text-[2rem]  ">Churn Details</h1>
       </div>
-      <div className="flex justify-center ">
+      {isLoading ? (
+        <div className="flex w-[100%] h-[30%] items-center justify-center">
+          <h1 className="animate-pulse">Loading</h1>
+        </div>
+      ) : isPredict && data ? (
+        <div className="flex bg-white shadow-md rounded-md flex-col justify-center items-center gap-2 p-2 h-[50vh] w-[100%]">
+          <div className="font-semibold text-[1rem]  p-4   md:text-[2rem]">
+          <h1>Customer Id: {data.cid}</h1>
+          <h1>Prediction: {data.prediction  == 1 ?<span className="text-red-500">Yes, this customer shows tendency of churning ,Retention steps Advised</span> : <span className="text-green-500 animate-pulse">No, this customer is not showing signs of churning</span>}</h1>
+          <h1>Prediction Probability: {data.probablity} </h1>
+          </div>
+         
+          
+        </div>
+      ) : 
+      (
+        <div className="flex justify-center ">
         <div className="flex  w-[95%]  flex-col md:flex-row justify-around items-center p-4 gap-4 bg-[#EEEBEB] shadow-md   rounded-md">
           <div className="bg-[#FFDBDB]/[80%] md:w-[38%] lg:w-[28%] w-[98%] flex flex-col md:flex-row gap-2 backdrop-blur-md p-2 rounded-xl md:h-[98%] shadow-md ">
             <div className="flex flex-col gap-2 h-[100%] md:w-[50%] w-[100%] 0 p-2">
@@ -142,7 +203,7 @@ export default function Home() {
                   }}
                   className="h-[1.5rem] shadow-md"
                 >
-                  <option value={null} default select>
+                  <option onChange={(e)=>(setCstate(e.currentTarget.value))} value={null} defaultValue>
                     Select State
                   </option>
                   <option value="AK">AK</option>
@@ -221,7 +282,7 @@ export default function Home() {
                   name="area"
                   className="h-[1.5rem] shadow-md"
                 >
-                  <option value={null} default select>
+                  <option value={null} defaultValue>
                     Select Area
                   </option>
                   <option value="408">408</option>
@@ -239,7 +300,7 @@ export default function Home() {
                   name="area"
                   className="h-[1.5rem] shadow-md"
                 >
-                  <option value={null} default select>
+                  <option value="" defaultValue>
                     Yes/No
                   </option>
                   <option value="1">Yes</option>
@@ -256,7 +317,7 @@ export default function Home() {
                   name="area"
                   className="h-[1.5rem] shadow-md"
                 >
-                  <option value="default" default select>
+                  <option value="" defaultValue>
                     Yes/No
                   </option>
                   <option value="1">Yes</option>
@@ -455,12 +516,15 @@ export default function Home() {
           </div>
         </div>
       </div>
+      )}
+     
       <div className="flex items-center justify-center flex-grow flex-shrink-0 m-2 md:m-0">
         <button
-          onClick={submit}
-          className="p-2  font-semibold text-white bg-[#29C8EB] hover:cursor-pointer hover:bg-[#29C8EB]/[80%] transition-all rounded-xl text-[1.3rem]"
+          onClick={isPredict? ()=>{setIsLoading(true);setTimeout(()=>{setIsPredict(false);setIsLoading(false)},2300)} : getPrediction}
+          className="p-2 disabled:bg-gray-500  font-semibold text-white bg-[#29C8EB] hover:cursor-pointer hover:bg-[#29C8EB]/[80%] transition-all rounded-xl text-[1.3rem]"
+          disabled = {isLoading ? true : false}
         >
-          ANALYZE
+          {isPredict ? "BACK" : "ANALYZE"}
         </button>
       </div>
     </div>
