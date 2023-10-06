@@ -26,15 +26,11 @@ app = FastAPI()
 
 def preprocess(x: pd.DataFrame) -> np.ndarray:
         scaler = StandardScaler().fit(x)
-        X_scaled = scaler.transform(x)
-        X_train = np.reshape(X_scaled, (X_scaled.shape[0], 1, X_scaled.shape[1]))
+        x_scaled = scaler.transform(x)
+        x_train = np.reshape(x_scaled, (x_scaled.shape[0], 1, x_scaled.shape[1]))
         
-        return X_train
-
-        y_pred_prob = model.predict(X_reshaped)
-        y_pred_rounded = np.round(y_pred_prob)
-        y_pred = y_pred_rounded.astype(int).ravel()
-        return y_pred
+        return x_train
+      
 
 
 
