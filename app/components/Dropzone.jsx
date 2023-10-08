@@ -10,7 +10,7 @@ const DropZone = ({className}) => {
 
     const [files,setFiles] = useState([])
 
-    const [img,setImg] = useState(null);
+    // const [img,setImg] = useState(null);
 
 
     
@@ -31,10 +31,7 @@ const handleFIleSubmit = async e => {
         }).then(res=> res.json())
 
         console.log(data)
-        if(data.graph){
-            setImg(data.graph[0])
-            print(img)
-        }
+        
     
     
 }
@@ -115,7 +112,7 @@ accept:{
                 ))}
             </ul>
 
-            {img && (<Image src={img} height={100} width={100} />)}
+            {/* {img && (<Image src={img} height={100} width={100} />)} */}
 
         </form>
     )
