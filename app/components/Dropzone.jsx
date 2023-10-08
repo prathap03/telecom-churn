@@ -34,7 +34,7 @@ accept:{
 }})
 
     const removeFile = (name)=>{
-        setFiles(files => files.filter(file=> file.name !== name))
+        setFiles(files => files?.filter(file=> file?.name !== name))
     }
 
     return (
