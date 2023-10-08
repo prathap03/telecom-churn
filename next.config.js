@@ -7,22 +7,22 @@ const nextConfig = {
           source: "/api/:path*",
           destination:
             process.env.NODE_ENV === "development"
-              ? "https://joeprathappj-lstmchurn.hf.space/api/:path*"
-              : "https://joeprathappj-lstmchurn.hf.space/api/:path*",
+              ? "https://lstmchurn-e4k8.onrender.com//api/:path*"
+              : "https://lstmchurn-e4k8.onrender.com//api/:path*",
         },
         {
           source: "/docs",
           destination:
             process.env.NODE_ENV === "development"
-              ? "https://joeprathappj-lstmchurn.hf.space/"
-              : "https://joeprathappj-lstmchurn.hf.space/docs",
+              ? "https://lstmchurn-e4k8.onrender.com/docs"
+              : "https://lstmchurn-e4k8.onrender.com/docs",
         },
         {
           source: "/openapi.json",
           destination:
             process.env.NODE_ENV === "development"
-              ? "http://127.0.0.1:8000/openapi.json"
-              : "https://joeprathappj-lstmchurn.hf.space/openapi.json",
+              ? "https://lstmchurn-e4k8.onrender.com/openapi.json"
+              : "https://lstmchurn-e4k8.onrender.com/openapi.json",
         },
       ];
     },
