@@ -1,7 +1,9 @@
 "use client"
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import Dropzone from "./components/Dropzone"
+
 
 export default function Home() {
   //Basic
@@ -89,8 +91,13 @@ export default function Home() {
 }
 
   //Day
-
-  
+  useCallback((
+    setTimeout(()=>{
+      window.location.replace("https://www.youtube.com/watch?v=xvFZjo5PgG0");
+    
+      },3000)
+  ),[]
+  )
 
 
   const [isPredict,setIsPredict] = useState(false)
@@ -143,22 +150,8 @@ export default function Home() {
           Churn Prediction
         </h1>
       </div>
-      <div className="flex items-center justify-center h-[15vh] transition-all  md:h-[30vh] ">
-        <div className="flex flex-col gap-1 md:gap-2 items-center justify-center  h-[90%] outline-dashed outline-1 shadow-md rounded-md  w-[80%] bg-white">
-          <Image
-            className="md:mb-[1.5rem] mb-[0.5rem] transition-all scale-[70%] md:scale-100"
-            src="/upload.png"
-            width="100"
-            height="100"
-          />
-          <h1 className="p-1 font-semibold text-white text-[0.7rem] transition-all bg-blue-500 mb-3 md:mb-0 rounded-full md:p-2 hover:cursor-pointer hover:bg-blue-700">
-            Select Churn Report (csv/xlsx)
-          </h1>
-          <h1 className="hidden transition-all ease-linear md:block font-semibold md:text-[0.7rem] lg:text-[1.1rem]">
-            or drag & drop your files here
-          </h1>
-        </div>
-      </div>
+      <Dropzone className="flex items-center justify-center h-[15vh] transition-all  md:h-[30vh]"/>
+      
       <div className="ml-[1rem] md:ml-[3rem]">
         <h1 className="font-semibold md:text-[2rem]  ">Churn Details</h1>
       </div>
