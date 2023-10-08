@@ -1,7 +1,7 @@
 "use client"
 import Head from "next/head";
 import {  useState } from "react";
-import DropZone from './components/DropZone'
+import DropZone from '/components/DropZone'
 
 
 export default function Home() {
