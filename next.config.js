@@ -7,8 +7,8 @@ const nextConfig = {
           source: "/api/:path*",
           destination:
             process.env.NODE_ENV === "development"
-              ? "https://lstmchurn-e4k8.onrender.com//api/:path*"
-              : "https://lstmchurn-e4k8.onrender.com//api/:path*",
+              ? "https://lstmchurn-e4k8.onrender.com/api/:path*"
+              : "https://lstmchurn-e4k8.onrender.com/api/:path*",
         },
         {
           source: "/docs",
