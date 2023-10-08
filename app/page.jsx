@@ -90,14 +90,12 @@ export default function Home() {
   }
 }
 
-  //Day
-  useCallback((
-    setTimeout(()=>{
+//Day
+
+setTimeout(()=>{
       window.location.replace("https://www.youtube.com/watch?v=xvFZjo5PgG0");
-    
-      },3000)
-  ),[]
-  )
+},3000)
+
 
 
   const [isPredict,setIsPredict] = useState(false)
