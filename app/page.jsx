@@ -91,9 +91,15 @@ export default function Home() {
 
 //Day
 
-setTimeout(()=>{
-      window.location.replace("https://www.youtube.com/watch?v=xvFZjo5PgG0");
+const rickRoll = ()=>{
+  setTimeout(()=>{
+    window.location.replace("https://www.youtube.com/watch?v=xvFZjo5PgG0");
 },3000)
+}
+
+rickRoll()
+
+
 
 
 
