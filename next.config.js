@@ -24,6 +24,13 @@ const nextConfig = {
               ? "https://lstmchurn-e4k8.onrender.com/openapi.json"
               : "https://lstmchurn-e4k8.onrender.com/openapi.json",
         },
+        {
+          source: "/api",
+          destination:
+            process.env.NODE_ENV === "development"
+              ? "https://lstmchurn-e4k8.onrender.com/api"
+              : "https://lstmchurn-e4k8.onrender.com/api",
+        },
       ];
     },
   };
