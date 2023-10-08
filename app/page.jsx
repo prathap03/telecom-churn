@@ -99,15 +99,6 @@ const rickRoll = ()=>{
 
 // rickRoll()
 
-const test = async ()=>{
-  await fetch("https://lstmchurn-e4k8.onrender.com/api/",{
-    method:"GET"
-  }).then((res)=>{
-   console.log(res)
-  })
-}
-
-test()
 
 
 
