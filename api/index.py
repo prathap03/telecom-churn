@@ -1,8 +1,10 @@
 from typing import Union
 
-from fastapi import FastAPI
+from fastapi import FastAPI, File,UploadFile
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+
 
 from sklearn.preprocessing import StandardScaler
 
@@ -50,7 +52,17 @@ def preprocess(x: pd.DataFrame) -> np.ndarray:
 class ChurnData(BaseModel):
     cid: Union[str,int]
     data: list[Union[float,int]]
-    
+
+
+@app.post("/api/predictCSV")
+def predict_csv(file: UploadFile = File(...)):
+    try:
+        df = pd.read_csv(file.file).head()
+        return jsonable_encoder({"data":df.to_dict(),"graph":[FileResponse("pic.png")]}) 
+        # return jsonable_encoder({"data":df.to_dict()})
+    except Exception as e:
+        print(e)
+        return jsonable_encoder({"error":e})  
       
 @app.post("/api/getPrediction")
 def get_prediction(body: ChurnData):

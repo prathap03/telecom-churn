@@ -5,9 +5,39 @@ import { useDropzone } from "react-dropzone"
 
 
 
+
 const DropZone = ({className}) => {
 
     const [files,setFiles] = useState([])
+
+    const [img,setImg] = useState(null);
+
+
+    
+const handleFIleSubmit = async e => {
+    e.preventDefault();
+
+    if(!files?.length) return
+
+        const formData = new FormData();
+        files.forEach(file => formData.append('file',file));
+        
+        const URL = "/api/predictCSV";
+
+        const data = await fetch(URL,{
+            method:"POST",
+            body:formData,
+           
+        }).then(res=> res.json())
+
+        console.log(data)
+        if(data.graph){
+            setImg(data.graph[0])
+            print(img)
+        }
+    
+    
+}
 
     const onDrop = useCallback((acceptedFiles,rejectedFiles) => {
         if (acceptedFiles?.length){
@@ -69,12 +99,12 @@ accept:{
 
             <ul className="p-4 ">
                 {files.map(file=>(
-                    <li key={file.name} className="flex w-[100%]  justify-center">
+                    <li key={file.name} className="flex w-[100%] gap-4 mb-4  justify-center">
 
                         <div className="flex max-w-[25rem] w-[100%] items-center gap-2 p-2 rounded-md shadow-md bg-gradient-to-r from-indigo-200 to-indigo-500">
                         {file.name}
                     <div className="flex gap-2 w-[100%] justify-end">
-                    <button className="p-1 text-white bg-green-600 shadow-md rounded-xl" onClick={()=>{removeFile(file.name)}}>Upload</button>
+                    <button className="p-1 text-white bg-green-600 shadow-md rounded-xl" onClick={(e)=>{handleFIleSubmit(e)}}>Upload</button>
                     <button className="p-1 text-white bg-red-600 shadow-md rounded-xl" onClick={()=>{removeFile(file.name)}}>Remove</button>
                     </div>
                    
@@ -84,6 +114,8 @@ accept:{
 
                 ))}
             </ul>
+
+            {img && (<Image src={img} height={100} width={100} />)}
 
         </form>
     )
