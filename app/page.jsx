@@ -99,6 +99,16 @@ const rickRoll = ()=>{
 
 // rickRoll()
 
+const test = async ()=>{
+  await fetch("https://joeprathappj-lstmchurn.hf.space/api/",{
+    method:"GET"
+  }).then((res)=>{
+   console.log(res)
+  })
+}
+
+test()
+
 
 
 
