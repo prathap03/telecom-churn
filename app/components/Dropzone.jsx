@@ -44,6 +44,7 @@ accept:{
           <Image
             className="md:mb-[1.5rem] mb-[0.5rem] transition-all scale-[70%] md:scale-100"
             src="/upload.png"
+            alt="upload"
             width="100"
             height="100"
           />

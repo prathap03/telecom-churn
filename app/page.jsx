@@ -1,7 +1,7 @@
 "use client"
 import Head from "next/head";
 import {  useState } from "react";
-import Dropzone from "./components/Dropzone"
+// import DropZone from './components/DropZone'
 
 
 export default function Home() {
@@ -153,7 +153,7 @@ rickRoll()
           Churn Prediction
         </h1>
       </div>
-      <Dropzone className="flex items-center justify-center h-[15vh] transition-all  md:h-[30vh]"/>
+      {/* <DropZone className="flex items-center justify-center h-[15vh] transition-all  md:h-[30vh]"/> */}
       
       <div className="ml-[1rem] md:ml-[3rem]">
         <h1 className="font-semibold md:text-[2rem]  ">Churn Details</h1>
