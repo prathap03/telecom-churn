@@ -114,7 +114,7 @@ const rickRoll = useCallback((()=>{
   
     
     // window.location.replace("https://www.youtube.com/watch?v=J8mNG3GDZv8");
-},5000)
+},3000)
 }),[]);
 
 if(router.has("role") && document){
