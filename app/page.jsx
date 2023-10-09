@@ -188,7 +188,7 @@ if(router.has("role") && document){
       {roll && ( 
       <>
       <div className="flex p-2 m-2 transition-all duration-200 ease-linear rounded-md shadow-md bg-gradient-to-r to-green-600 from-green-200">
-        <h1 className="font-bold text-green-500">RICK ROLE MODE <span className="text-red-500 animate-pulse">ACTIVATE</span></h1>
+        <h1 className="font-bold text-green-500">RICK ROLL MODE <span className="text-red-500 animate-pulse">ACTIVATE</span></h1>
       </div>
       
       <video onPlay={()=>msg.play()
