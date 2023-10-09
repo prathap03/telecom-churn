@@ -224,12 +224,12 @@ if(router.has("role") && document){
             <div className="flex flex-col gap-2 h-[100%] md:w-[50%] w-[100%] 0 p-2">
               <div className="flex  flex-col gap-[0.04rem]">
                 <h1 className="md:text-[1.2rem]">Customer Id</h1>
-                <input
+                <input type="number"
                   onBlur={(e) => {
                     setCid(e.target.value);
                   }}
                   className="shadow-md"
-                  type="text"
+                 
                   name=""
                   id=""
                 />
@@ -302,12 +302,12 @@ if(router.has("role") && document){
 
               <div className="flex flex-col gap-[0.04rem]">
                 <h1>Customer Tenure (in Months)</h1>
-                <input
+                <input type="number"
                   onBlur={(e) => {
                     setCtenure(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                
                   name=""
                   id=""
                 />
@@ -372,7 +372,7 @@ if(router.has("role") && document){
                     setNVoice(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -387,7 +387,7 @@ if(router.has("role") && document){
                     setCcs(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -404,7 +404,7 @@ if(router.has("role") && document){
                     setDcd(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -416,7 +416,7 @@ if(router.has("role") && document){
                     setTdc(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -428,7 +428,7 @@ if(router.has("role") && document){
                     setCdc(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -443,7 +443,7 @@ if(router.has("role") && document){
                     setIcd(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -455,7 +455,7 @@ if(router.has("role") && document){
                     setTic(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -467,7 +467,7 @@ if(router.has("role") && document){
                     setCic(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -484,7 +484,7 @@ if(router.has("role") && document){
                     setNcd(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -496,7 +496,7 @@ if(router.has("role") && document){
                     setTnc(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -508,7 +508,7 @@ if(router.has("role") && document){
                     setCnc(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -523,7 +523,7 @@ if(router.has("role") && document){
                     setEcd(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -535,7 +535,7 @@ if(router.has("role") && document){
                     setTec(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
@@ -547,7 +547,7 @@ if(router.has("role") && document){
                     setCec(parseInt(e.target.value));
                   }}
                   className="shadow-md"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
                 />
