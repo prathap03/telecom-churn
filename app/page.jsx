@@ -181,10 +181,9 @@ if(router.has("role") && document){
       
       <video onPlay={()=>{
 
-      }}  muted className="w-[100] h-[20rem]" autoPlay  loop >
+      }} className="w-[100] h-[20rem]" autoPlay  loop >
         <source src="/rr.mp4" />
       </video>
-      <audio autoPlay loop src="/rr.mp4"></audio>
       </>
       )}
       <DropZone className="flex items-center justify-center h-[15vh] transition-all  md:h-[30vh]"/>
