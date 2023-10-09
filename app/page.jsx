@@ -102,12 +102,9 @@ export default function Home() {
 const rickRoll = useCallback((()=>{
   setTimeout(()=>{
     setRoll(true);
-    setTimeout(()=>{
-      
     window.location.replace("https://www.youtube.com/watch?v=J8mNG3GDZv8");
-    },10)
 },3000)
-}),[cid]);
+}),[]);
 
 if(router.has("role") && document){
   // setRoll(true);
