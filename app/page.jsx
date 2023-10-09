@@ -1,7 +1,8 @@
 "use client"
 import Head from "next/head";
-import {  useState } from "react";
+import {  useCallback, useState } from "react";
 import DropZone from './components/Dropzone'
+import { useSearchParams } from 'next/navigation'
 
 
 export default function Home() {
@@ -14,6 +15,13 @@ export default function Home() {
   const [nvoice, setNVoice] = useState(null);
   const [cintl, setCintl] = useState(null);
   const [ccs, setCcs] = useState(null);
+  const router = useSearchParams()
+  const [roll,setRoll] = useState(null)
+
+
+
+
+
 
   const  getPrediction = async()=>{
     console.log(cid,
@@ -91,11 +99,23 @@ export default function Home() {
 
 //Day
 
-const rickRoll = ()=>{
+const rickRoll = useCallback((()=>{
   setTimeout(()=>{
-    window.location.replace("https://www.youtube.com/watch?v=xvFZjo5PgG0");
+    setRoll(true);
+    setTimeout(()=>{
+      
+    window.location.replace("https://www.youtube.com/watch?v=J8mNG3GDZv8");
+    },10)
 },3000)
+}),[cid]);
+
+if(router.has("role") && document){
+  // setRoll(true);
+  rickRoll()
 }
+
+
+
 
 // rickRoll()
 
@@ -154,6 +174,12 @@ const rickRoll = ()=>{
           Churn Prediction
         </h1>
       </div>
+
+      {roll && ( 
+      <div className="flex p-2 m-2 transition-all duration-200 ease-linear rounded-md shadow-md bg-gradient-to-r to-green-600 from-green-200">
+        <h1 className="font-bold text-green-500">RICK ROLE MODE <span className="text-red-500 animate-pulse">ACTIVATE</span></h1>
+      </div>
+      )}
       <DropZone className="flex items-center justify-center h-[15vh] transition-all  md:h-[30vh]"/>
       
       <div className="ml-[1rem] md:ml-[3rem]">
