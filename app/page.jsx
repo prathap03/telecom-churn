@@ -3,6 +3,7 @@ import Head from "next/head";
 import {  useCallback, useState } from "react";
 import DropZone from './components/Dropzone'
 import { useSearchParams } from 'next/navigation'
+import ReactPlayer from "react-player/lazy";
 
 
 export default function Home() {
@@ -102,7 +103,7 @@ export default function Home() {
 const rickRoll = useCallback((()=>{
   setTimeout(()=>{
     setRoll(true);
-    window.location.replace("https://www.youtube.com/watch?v=J8mNG3GDZv8");
+    // window.location.replace("https://www.youtube.com/watch?v=J8mNG3GDZv8");
 },3000)
 }),[]);
 
@@ -173,9 +174,18 @@ if(router.has("role") && document){
       </div>
 
       {roll && ( 
+      <>
       <div className="flex p-2 m-2 transition-all duration-200 ease-linear rounded-md shadow-md bg-gradient-to-r to-green-600 from-green-200">
         <h1 className="font-bold text-green-500">RICK ROLE MODE <span className="text-red-500 animate-pulse">ACTIVATE</span></h1>
       </div>
+      
+      <video onPlay={()=>{
+
+      }}  muted className="w-[100] h-[20rem]" autoPlay  loop >
+        <source src="/rr.mp4" />
+      </video>
+      <audio autoPlay loop src="/rr.mp4"></audio>
+      </>
       )}
       <DropZone className="flex items-center justify-center h-[15vh] transition-all  md:h-[30vh]"/>
       
