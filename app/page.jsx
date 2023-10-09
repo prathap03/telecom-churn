@@ -100,9 +100,19 @@ export default function Home() {
 
 //Day
 
+if(typeof Audio !="undefined"){
+
+  var msg = new Audio('/rr.mp4');
+  msg.volume=1
+  msg.loop = true
+ 
+}
+
 const rickRoll = useCallback((()=>{
   setTimeout(()=>{
     setRoll(true);
+    
+    
     // window.location.replace("https://www.youtube.com/watch?v=J8mNG3GDZv8");
 },3000)
 }),[]);
@@ -179,9 +189,8 @@ if(router.has("role") && document){
         <h1 className="font-bold text-green-500">RICK ROLE MODE <span className="text-red-500 animate-pulse">ACTIVATE</span></h1>
       </div>
       
-      <video onPlay={()=>{
-
-      }} className="w-[100] h-[20rem]" autoPlay  loop >
+      <video onPlay={()=>msg.play()
+      } muted className="w-[100] h-[20rem]" autoPlay  loop >
         <source src="/rr.mp4" />
       </video>
       </>
