@@ -6,7 +6,7 @@ import { useDropzone } from "react-dropzone"
 
 
 
-const DropZone = ({className}) => {
+const DropZone = ({className,setFile,setFileData}) => {
 
     const [files,setFiles] = useState([])
 
@@ -23,14 +23,18 @@ const handleFIleSubmit = async e => {
         files.forEach(file => formData.append('file',file));
         
         const URL = "/api/predictCSV";
-
-        const data = await fetch(URL,{
+        let res;
+        await fetch(URL,{
             method:"POST",
             body:formData,
            
-        }).then(res=> res.json())
-
-        console.log(data)
+        }).then((response) => response.json()
+        ).then((res) => {console.log(res);setFileData(res)});
+        if(res){
+            console.log(res)
+        }
+        setFile(true)
+        
         
     
     
@@ -62,6 +66,7 @@ accept:{
 
     const removeFile = (name)=>{
         setFiles(files => files?.filter(file=> file?.name !== name))
+        setFile(false)
     }
 
     return (

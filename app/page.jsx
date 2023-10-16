@@ -4,6 +4,7 @@ import {  useCallback, useState } from "react";
 import DropZone from './components/Dropzone'
 import { useSearchParams } from 'next/navigation'
 import ReactPlayer from "react-player/lazy";
+import { Inder } from "next/font/google";
 
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
   const [ccs, setCcs] = useState(null);
   const router = useSearchParams()
   const [roll,setRoll] = useState(null)
+  const [fileData,setFileData] = useState(null)
 
 
 
@@ -164,7 +166,7 @@ if(router.has("role") && document){
 
   //file
 
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(false);
   const [data,setData] = useState(null);
 
   return (
@@ -197,7 +199,7 @@ if(router.has("role") && document){
       </video>
       </>
       )}
-      <DropZone className="flex items-center justify-center h-[15vh] transition-all  md:h-[30vh]"/>
+      <DropZone setFile={setFile} setFileData={setFileData} className="flex items-center justify-center h-[15vh] transition-all  md:h-[30vh]"/>
       
       <div className="ml-[1rem] md:ml-[3rem]">
         <h1 className="font-semibold md:text-[2rem]  ">Churn Details</h1>
@@ -216,7 +218,21 @@ if(router.has("role") && document){
          
           
         </div>
-      ) : 
+      ) :  file && fileData ? (
+        <div className="flex w-[100%] justify-center items-center gap-2 flex-col">
+          {fileData.map((data,index)=>{
+        
+              return (
+              <div className="flex flex-col gap-2 w-[90%] p-2 bg-white shadow-md rounded-md">
+                <h1>Customer Id: {index}</h1>
+                <h1>Prediction: {data.pred  == 1 ?<span className="text-red-500">Yes, this customer shows tendency of churning ,Retention steps Advised</span> : <span className="text-green-500 animate-pulse">No, this customer is not showing signs of churning</span>}</h1>
+                <h1>Probability: {JSON.stringify(parseFloat(data.prob))*100}% </h1>
+              </div>
+            )
+          
+          })}
+        </div>
+      ):
       (
         <div className="flex justify-center ">
         <div className="flex  w-[95%]  flex-col md:flex-row justify-around items-center p-4 gap-4 bg-[#EEEBEB] shadow-md   rounded-md">
@@ -558,15 +574,17 @@ if(router.has("role") && document){
       </div>
       )}
      
-      <div className="flex items-center justify-center flex-grow flex-shrink-0 m-2 md:m-0">
-        <button
-          onClick={isPredict? ()=>{setIsLoading(true);setTimeout(()=>{setIsPredict(false);setIsLoading(false)},2300)} : getPrediction}
-          className="p-2 disabled:bg-gray-500  font-semibold text-white bg-[#29C8EB] hover:cursor-pointer hover:bg-[#29C8EB]/[80%] transition-all rounded-xl text-[1.3rem]"
-          disabled = {isLoading ? true : false}
-        >
-          {isPredict ? "BACK" : "ANALYZE"}
-        </button>
-      </div>
+    {!file && (
+          <div className="flex items-center justify-center flex-grow flex-shrink-0 m-2 md:m-0">
+          <button
+            onClick={isPredict? ()=>{setIsLoading(true);setTimeout(()=>{setIsPredict(false);setIsLoading(false)},2300)} : getPrediction}
+            className="p-2 disabled:bg-gray-500  font-semibold text-white bg-[#29C8EB] hover:cursor-pointer hover:bg-[#29C8EB]/[80%] transition-all rounded-xl text-[1.3rem]"
+            disabled = {isLoading ? true : false}
+          >
+            {isPredict ? "BACK" : "ANALYZE"}
+          </button>
+        </div>
+    )}
     </div>
   );
 }
