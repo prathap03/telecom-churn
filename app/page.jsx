@@ -223,7 +223,7 @@ if(router.has("role") && document){
           {fileData.map((data,index)=>{
         
               return (
-              <div className="flex flex-col gap-2 w-[90%] p-2 bg-white shadow-md rounded-md">
+              <div key={index} className="flex flex-col gap-2 w-[90%] p-2 bg-white shadow-md rounded-md">
                 <h1>Customer Id: {index}</h1>
                 <h1>Prediction: {data.pred  == 1 ?<span className="text-red-500">Yes, this customer shows tendency of churning ,Retention steps Advised</span> : <span className="text-green-500 animate-pulse">No, this customer is not showing signs of churning</span>}</h1>
                 <h1>Probability: {JSON.stringify(parseFloat(data.prob))*100}% </h1>
